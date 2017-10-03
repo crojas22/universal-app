@@ -1,0 +1,10 @@
+<script type="text/javascript">
+  //passes initialData from server to window object so it can be used with React
+  window.__PRELOADED_STATE__ = <%- JSON.stringify(data) -%>
+</script>
+<%- include('header') -%>
+  <body>
+    <div id="root"><%- initialMarkup -%></div>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
