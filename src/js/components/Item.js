@@ -6,6 +6,7 @@ const Item = (props) => {
   const user = props.items.find((i) => {
     return i.location.postcode === parseInt(props.match.params.item)
   })
+  
   if (!user) {
     return <div>Sorry, but the user was not found</div>
   }

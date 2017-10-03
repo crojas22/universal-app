@@ -16,21 +16,7 @@ server.set('view engine', 'ejs')
 
 server.use(express.static('public'))
 
-server.get(['/'], (req, res) => {
-  const store = createStore(reducer, applyMiddleware(thunk))
-  let context = {}
-  const initialMarkup = renderToString(
-    <StaticRouter location={req.url} context={context} ><Provider store={store}><App />
-    </Provider></StaticRouter>
-  )
-  const data = store.getState()
-    res.render('index', {
-      initialMarkup,
-      data
-  })
-})
-
-server.get(['/list', '/list/:item'], (req, res) => {
+server.get(['/','/list', '/list/:item'], (req, res) => {
   axios.get('https://randomuser.me/api/?results=10')
   .then(resp => {
     let context = {}
